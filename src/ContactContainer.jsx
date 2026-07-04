@@ -17,7 +17,7 @@ const ContactContainer = ({ theme }) => {
     }}>
       <h2>Contact Me</h2>
       <div style={{ display: 'flex', gap: '40px', marginTop: '20px', flexWrap: 'wrap' }}>
-        {/* Form Inputs */}
+        
         <div style={{ flex: 1, minWidth: '300px' }}>
           <div style={{ marginBottom: '15px' }}>
             <label style={{ display: 'block', marginBottom: '5px' }}>Name:</label>
@@ -41,7 +41,7 @@ const ContactContainer = ({ theme }) => {
           <button style={{ padding: '10px 20px', cursor: 'pointer', background: '#0070f3', color: '#fff', border: 'none', borderRadius: '4px' }}>Send</button>
         </div>
 
-        {/* Real-time Live Preview */}
+        
         <div style={{ 
           flex: 1, 
           minWidth: '300px', 

@@ -4,7 +4,7 @@ import schoolImage from "./assets/School-p.png";
 import invoicesImage from "./assets/Invoices-p.png";
 
 const ProjectsSection = ({ theme }) => {
-  // Mock data for your profile projects
+  
   const projects = [
     { 
       id: 1, 
@@ -50,33 +50,52 @@ const ProjectsSection = ({ theme }) => {
         display: 'flex', 
         gap: '20px', 
         marginTop: '20px',
-        flexWrap: 'wrap' /* Allows cards to wrap nicely on smaller screens */
+        flexWrap: 'wrap' 
       }}>
         {projects.map(proj => (
           <div key={proj.id} style={{ 
             border: `1px solid ${isDark ? '#444' : '#ccc'}`, 
             padding: '20px', 
             borderRadius: '8px', 
-            flex: '1 1 calc(33.333% - 20px)', /* Even 3-column layout basis */
+            flex: '1 1 calc(33.333% - 20px)', 
             minWidth: '280px',
             backgroundColor: isDark ? '#2d2d2d' : '#ffffff',
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
+            display: 'flex',          
+            flexDirection: 'column'  
           }}>
-            {/* Added <img> tag here */}
+            
             <img 
               src={proj.image} 
               alt={proj.name} 
               style={{ 
                 width: '100%', 
                 height: '200px', 
-                objectFit: 'cover', /* Prevents image stretching */
+                objectFit: 'cover', 
                 borderRadius: '6px', 
                 marginBottom: '15px' 
               }} 
             />
-            {/* Fixed property keys to match the projects data array */}
+            
             <h3 style={{ margin: '0 0 10px 0' }}>{proj.name}</h3>
-            <p style={{ margin: '0', fontSize: '14px', lineHeight: '1.5' }}>{proj.description}</p>
+            <p style={{ margin: '0 0 15px 0', fontSize: '14px', lineHeight: '1.5' }}>{proj.description}</p>
+            
+            
+            <a 
+              href={proj.link} 
+              target="_blank" 
+              rel="noreferrer" 
+              style={{ 
+                marginTop: 'auto', 
+                color: isDark ? '#4da6ff' : '#0066cc', 
+                textDecoration: 'none', 
+                fontWeight: '500',
+                fontSize: '14px',
+                display: 'inline-block'
+              }}
+            >
+              View Repository →
+            </a>
           </div>
         ))}
       </div>
@@ -85,3 +104,4 @@ const ProjectsSection = ({ theme }) => {
 };
 
 export default ProjectsSection;
+

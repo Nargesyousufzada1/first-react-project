@@ -24,7 +24,7 @@ const FeedbackWall = ({ theme }) => {
     }}>
       <h2>Feedback Wall</h2>
       
-      {/* Wall Postings */}
+      
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '15px', margin: '20px 0' }}>
         {feedbacks.map(fb => (
           <div key={fb.id} style={{
@@ -39,7 +39,7 @@ const FeedbackWall = ({ theme }) => {
         ))}
       </div>
 
-      {/* Leave Feedback Form */}
+     
       <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '10px' }}>
         <input 
           type="text" 

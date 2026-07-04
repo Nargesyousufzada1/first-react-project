@@ -10,20 +10,19 @@ import Footer from './Footer';
 
 
 
-// --- Mock Live Database Updates for Polling ---
 
 
 export default function App() {
-  // --- 8. Theme State (Light, Dark, Ocean) ---
+  
   const [theme, setTheme] = useState(() => localStorage.getItem('portfolio-theme') || 'light');
 
-  // --- 10. Scroll Progress State ---
+  
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  // --- 6. Polling Updates State ---
+
   const [liveUpdates, setLiveUpdates] = useState([]);
 
-  // --- 10. Scroll Progress Indicator Hook ---
+  
   useEffect(() => {
     const handleScroll = () => {
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -33,12 +32,11 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // --- 8. Theme Cache Local Storage Hook ---
+ 
   useEffect(() => {
     localStorage.setItem('portfolio-theme', theme);
   }, [theme]);
 
-  // --- 6. Live Polling Simulation Hook (15s Interval + Proper Cleanup) ---
   useEffect(() => {
     const interval = setInterval(() => {
       const randomMsg = LIVE_PORTFOLIO_UPDATES[Math.floor(Math.random() * LIVE_PORTFOLIO_UPDATES.length)];
@@ -49,7 +47,7 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  // Theme Variable Tailored Map Injector
+ 
   const themeClasses = theme === 'light' 
     ? "bg-slate-50 text-slate-800" 
     : theme === 'dark' 
@@ -58,35 +56,31 @@ export default function App() {
 
   return (
     <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${themeClasses}`}>
-      {/* 10. Scroll Progress indicator bar */}
+     
       <div 
         className="fixed top-0 left-0 h-1 z-50 transition-all duration-100 bg-gradient-to-r from-pink-500 via-purple-500 to-emerald-400" 
         style={{ width: `${scrollProgress}%` }}
       />
 
-      {/* Your exact Navbar */}
       <Navbar theme={theme} setTheme={setTheme} />
 
-      {/* 6. Animated Incoming Live Polling Ticker */}
      
-      {/* Your exact Header component invocation */}
       <Header welcomeMessage="Hello! I am an aspiring software engineering student focused on building clean, colorful, and accessible interfaces. My short-term goal is to master dynamic web rendering structures, component state modularity, and cross-platform layouts." theme={theme} />
       
       <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6">
-        {/* Your exact About component invocation */}
+       
         <About />
 
-        {/* Your exact ProjectsSection component invocation */}
+      
         <ProjectsSection theme={theme} />
         
-        {/* Contact Module: Combined Contact Form & Real-time Live Preview */}
+       
         <ContactContainer theme={theme} />
         
         {/* Feedback Wall Module */}
         <FeedbackWall theme={theme} />
       </main>
 
-      {/* Your exact Footer component invocation */}
       <Footer />
     </div>
   );
@@ -105,7 +99,7 @@ function Navbar({ theme, setTheme }) {
         <li><a href="#projects" className="text-sm font-medium hover:text-purple-400 transition-colors">Projects</a></li>
         <li><a href="#contact" className="text-sm font-medium hover:text-pink-400 transition-colors">Contact</a></li>
         
-        {/* 8. Theme Switching UI Cluster added safely into navigation block */}
+        
         <div className="ml-2 flex items-center bg-slate-800 p-1 rounded-xl gap-1 border border-slate-700">
           <button onClick={() => setTheme('light')} className={`px-2 py-1 text-xs rounded-lg font-bold transition-all ${theme === 'light' ? 'bg-white text-slate-900 shadow' : 'text-slate-400'}`}>☀️</button>
           <button onClick={() => setTheme('dark')} className={`px-2 py-1 text-xs rounded-lg font-bold transition-all ${theme === 'dark' ? 'bg-purple-600 text-white shadow' : 'text-slate-400'}`}>🌙</button>
@@ -118,7 +112,7 @@ function Navbar({ theme, setTheme }) {
 
 
 function Header({ welcomeMessage, theme }) {
-  // Your exact variables completely untouched
+  
   const name = "Narges Yousufzada";
   const quotes = [
     "The best way to predict the future is to invent it.",
@@ -157,10 +151,10 @@ function Header({ welcomeMessage, theme }) {
 
 function About() {
   const [showMore, setShowMore] = useState(false);
-  // 9. Interactive Avatar State Reaction added non-destructively
+  
   const [avatarReact, setAvatarReact] = useState("👋 Click my face!");
 
-  // Your exact list array completely untouched
+ 
   const hobbies = [
     "Building web interfaces with React & Tailwind CSS",
     "Exploring sustainable, open-source automation tools",
@@ -170,7 +164,7 @@ function About() {
     "Basic understanding of Data Science"
   ];
 
-  // 9. Extra requirement item skill matrix component data
+  
   const skillMetrics = [
     { name: "React Framework", level: 85, fact: "Enjoys structural hooks and custom rendering pipelines!" },
     { name: "Tailwind Engineering", level: 90, fact: "Obsessed with utility classes, grids, and rapid layout design." },
@@ -186,7 +180,7 @@ function About() {
     <section id="about" className="max-w-4xl mx-auto my-16 px-6 py-12 bg-gradient-to-br from-emerald-50/50 to-teal-50/30 rounded-3xl border border-emerald-100/50 shadow-sm">
       <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
         
-        {/* 9. Interactive Avatar Component Section */}
+        
         <div onClick={handleAvatarInteraction} className="relative group cursor-pointer select-none shrink-0">
           <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-pink-500 via-purple-500 to-emerald-400 flex items-center justify-center text-4xl shadow-md transform group-hover:rotate-12 transition-transform duration-300">
             👩‍💻
@@ -205,7 +199,7 @@ function About() {
             Here are some of the areas I specialize in and love to explore:
           </p>
 
-          {/* 🌟 HOBBIES LIST INJECTION START */}
+          
           <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0">
             {hobbies.map((hobby, index) => (
               <li key={index} className="flex items-center gap-2 text-slate-700 bg-white/60 px-4 py-2.5 rounded-xl border border-emerald-100 shadow-sm text-sm font-medium">
@@ -214,7 +208,7 @@ function About() {
               </li>
             ))}
           </ul>
-          {/* HOBBIES LIST INJECTION END */}
+          
 
         </div>
       </div>
